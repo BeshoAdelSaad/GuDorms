@@ -1,0 +1,68 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container-fluid">
+        <!-- زر القائمة للأجهزة الصغيرة -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- روابط الناف بار -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="studentsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Students
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="studentsDropdown">
+                        <li><a class="dropdown-item" href="">Students</a></li>
+                        <li><a class="dropdown-item" href="">Students Profile</a></li>
+                        <li><a class="dropdown-item" href="">Reservations</a></li>
+                        <li><a class="dropdown-item" href="">Penalties</a></li>
+                    </ul>
+                </li>
+                <!-- روابط إضافية -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="gBuildingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        G Building
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="gBuildingDropdown">
+                        <li><a class="dropdown-item" href="#">Link 1</a></li>
+                        <li><a class="dropdown-item" href="#">Link 2</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Rooms</a>
+                </li>
+                {% if user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link" href="">Settings</a>
+                </li>
+                {% endif %}
+            </ul>
+
+            <!-- مربع البحث -->
+            <form class="d-flex me-3" style="max-width: 300px;">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            </form>
+
+            <!-- اسم المستخدم وصورته -->
+            <span class="navbar-text text-light me-3 d-none d-lg-inline-block">
+                Welcome, {{ user.first_name }}
+            </span>
+            <div class="dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Profile
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                    <li><a class="dropdown-item" href="http://127.0.0.1:8000/admin/">Your Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </div>
+            <img src="{% static 'images/man.png' %}" alt="Profile Picture" class="rounded-circle ms-3" style="width: 40px; height: 40px;">
+        </div>
+    </div>
+</nav>
+

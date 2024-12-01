@@ -1,0 +1,16 @@
+<!-- الهيدر (Navbar) -->
+{% include 'layouts/header.html' %}
+
+{% include 'layouts/navbar.html' %}
+
+
+<!-- المحتوى الأساسي للصفحة -->
+<div class="container mt-5">
+    {% block content %}
+    <!-- المحتوى المخصص للصفحة سيتنقل هنا -->
+    {% endblock %}
+</div>
+
+<!-- الفوتر -->
+
+    {% include 'layouts/footer.html' %}
